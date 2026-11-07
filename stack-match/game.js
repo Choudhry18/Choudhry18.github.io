@@ -13,7 +13,7 @@ const colors = {
   Rust: ['#ffe4cc', '#f2a474'], Scala: ['#ffdbe6', '#f1a0b6'], TypeScript: ['#d9e6ff', '#92aef0'],
   Diamond: ['#e8eaf0', '#b5bdcb'], Circle: ['#f5f5f6', '#c9cbd1'],
 };
-const shapes = ['27%', '45%', '23%', '42% 25%', '25% 42%'];
+const shapes = ['27%', '45%', '23%', '42% 25%', '25% 42%', '36% 48%'];
 const board = document.querySelector('#board');
 const from = document.querySelector('#from');
 const to = document.querySelector('#to');
@@ -53,8 +53,10 @@ function languagesFor(start, end) {
       totals.set(name, (totals.get(name) || 0) + count);
     }
   }
-  return [...totals].sort(([a, countA], [b, countB]) => countB - countA || a.localeCompare(b))
+  const ranked = [...totals].sort(([a, countA], [b, countB]) => countB - countA || a.localeCompare(b))
     .slice(0, 5).map(([name]) => name);
+  if (totals.has('Rust') && !ranked.includes('Rust')) ranked.push('Rust');
+  return ranked;
 }
 
 function matchIndexes(tiles) {
@@ -102,7 +104,7 @@ function newGrid() {
       });
       tiles.push(random(choices));
     }
-  } while (!hasMove(tiles));
+  } while (palette.some(name => !tiles.includes(name)) || !hasMove(tiles));
   return tiles;
 }
 
