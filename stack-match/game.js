@@ -125,7 +125,7 @@ function render(hits = new Set(), drops = new Set()) {
         image.addEventListener('error', () => image.replaceWith(name.slice(0, 2)), { once: true });
         button.replaceChildren(image);
       } else {
-        button.textContent = name === 'Diamond' ? '◆' : name === 'Circle' ? '●' : name.slice(0, 2);
+        button.textContent = name === 'Diamond' ? '◆' : name === 'Circle' ? '●' : name === 'Assembly' ? 'ASM' : name.slice(0, 2);
       }
     }
     const [top, bottom] = colors[name] || ['#e5ebf4', '#b6c2d3'];
