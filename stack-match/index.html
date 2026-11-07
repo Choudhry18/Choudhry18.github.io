@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A match-three game built from Abdullah's public GitHub contributions.">
+  <title>Stack Match · Choudhry18</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="activity.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="back" href="https://github.com/Choudhry18">← GitHub profile</a>
+      <h1>Stack Match</h1>
+      <p class="intro">Choose a year range. Swap adjacent tiles to match three.</p>
+    </header>
+    <section class="controls" aria-label="Contribution years">
+      <label>From <select id="from"></select></label>
+      <label>To <select id="to"></select></label>
+      <button id="reset" type="button">New board</button>
+    </section>
+    <div class="game">
+      <p id="languages"></p>
+      <div id="board" role="group" aria-label="Match-three board"></div>
+      <footer><span id="message" role="status"></span><strong>Score <output id="score">0</output></strong></footer>
+    </div>
+  </main>
+</body>
+</html>
